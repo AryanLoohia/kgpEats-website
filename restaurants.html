@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="restaurants.css" />
+    <title>kgpEats</title>
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <a href="index.html" class="logo">
+          <div class="masterlogo"></div>
+        </a>
+
+        <div class="hamburger">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+
+        <div class="nav__link hide">
+          <a href="index.html">Home</a>
+          <a href="restaurants.html">Restaurants</a>
+          
+          
+        </div>
+      </nav>
+    </header>
+
+
+
+   
+      
+  <div class="card-container" id="restaurants">
+    <!-- Cards will be injected here -->
+  </div>
+ 
+  
+ 
+  
+  </body>
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDvL2JXrpJanEPSM3orKiBnXVBhenpe-MY",
+  authDomain: "kgpbistro.firebaseapp.com",
+  projectId: "kgpbistro",
+  storageBucket: "kgpbistro.appspot.com",
+  messagingSenderId: "57541096543",
+  appId: "1:57541096543:web:48a3032f6455729c8a97ea",
+  measurementId: "G-N0H7ZPPPRL"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Reference to the collection
+const restaurantsCol = collection(db, "restaurants");
+
+// Function to display restaurants
+async function displayRestaurants() {
+  const restaurantDocs = await getDocs(restaurantsCol);
+  const restaurantContainer = document.getElementById('restaurants');
+
+  restaurantDocs.forEach(doc => {
+    const restaurant = doc.data();
+    const card = document.createElement('a');
+    card.className = 'restaurant-card';
+    card.href = restaurant.website;
+    card.style.backgroundImage = `url(${restaurant.logo})`;
+
+    const name = document.createElement('div');
+    name.className = 'restaurant-name';
+    name.textContent = restaurant.name;
+
+    card.appendChild(name);
+    restaurantContainer.appendChild(card);
+  });
+}
+
+displayRestaurants();
+  </script>
+  <script src="script.js"></script>
+
+</html>

@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+
+  /* nav styles */
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px ;
+    background-color:#f26222;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    color: white;
+    padding-left: 20px;
+  }
+  
+  .hamburger {
+    padding-right: 20px;
+    cursor: pointer;
+    /* color:white; */
+  }
+  
+  .hamburger .line {
+    display: block;
+    width: 41px;
+    height: 5px;
+    margin-bottom: 9px;
+    background-color: white;
+    
+  }
+  .nav__link {
+    position: fixed;
+    width: 94%;
+    top: 6rem;
+    left: 3%;
+    z-index: 1;
+    background-color:  #1467e3;
+  }
+  
+  .nav__link a {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    color:white;
+    transition:1s ease;
+  }
+  
+  .nav__link a:hover {
+    background-color: orangered;
+    border-radius:10px;
+  }
+  
+  .hide {
+    display: none;
+  }
+  .masterlogo {
+    width: 150px;
+    height: 52px;
+    background-image: url(assets/masterlogo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+
+  
+  @media screen and (min-width: 600px) {
+    .nav__link {
+      display: block;
+      position: static;
+      width: auto;
+      margin-right: 20px;
+      background: none;
+    }
+  
+    .nav__link a {
+      display: inline-block;
+      padding: 15px 20px;
+    }
+  
+    .hamburger {
+      display: none;
+    }
+    .masterlogo {
+      width: 150px;
+      height: 52px;
+      background-image: url(assets/masterlogo.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+
+
+    /* .main{
+        
+        height:95vh;
+        width:100vw;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        background:url('assets/whitebg.jpg');
+        background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    } */
+
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        width:100vw;
+        min-height:100vh;
+        justify-content: center;
+        padding: 20px;
+        background: url(assets/mac.jpg);
+background-color: rgba(0, 0, 0, 0.7); /* Black with 50% opacity */
+  background-blend-mode: darken;
+}
+  
+      .restaurant-card {
+        width: 300px;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+  
+      .restaurant-card:hover {
+        transform: scale(1.05);
+      }
+  
+      .restaurant-name {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 10px;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+  
+      .restaurant-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+      }
